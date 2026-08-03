@@ -642,7 +642,7 @@
         const d = new Date(e.date);
         return startOfDay(d).getTime() === dayStart.getTime() && d.getTime() <= now.getTime();
       })
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     renderArchive();
   }
 
