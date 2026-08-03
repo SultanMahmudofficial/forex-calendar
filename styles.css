@@ -297,6 +297,7 @@ html:not([data-theme="light"]) .icon-moon { display: none; }
   font-variant-numeric: tabular-nums;
 }
 .arch-num:not(:empty) { color: var(--text); }
+.arch-stats, .event-stats { display: none; } /* only shown on mobile */
 .arch-actual {
   font-size: 12px;
   font-variant-numeric: tabular-nums;
@@ -732,32 +733,111 @@ html[data-theme="light"] .cell.mv-worse { color: #b91c1c; }
 .footer .legend .impact { font-size: 10px; }
 
 /* ---------- Responsive ---------- */
+
+/* Mobile: compact card-style rows. Desktop (>=900px) styles are untouched. */
 @media (max-width: 900px) {
   .toolbar { top: 57px; }
-  .day-head { top: 146px; }
-  .next-event { display: none; }
+  .day-head { top: 140px; }
+
+  /* hide decorative/filter-only elements that eat space on small screens */
+  .next-event, .clock { display: none; }
+
+  .tabs-row { gap: 6px; }
+  .today-btn span { display: none; }
+  .today-btn { padding: 6px 10px; }
+
+  .tools { gap: 8px; }
+  .chip { padding: 5px 8px; font-size: 11px; }
+  .search { min-width: 0; flex: 1 1 130px; max-width: none; }
+
   .event {
-    grid-template-columns: 72px 44px minmax(0, 1fr);
-    gap: 10px;
+    grid-template-columns: 68px 36px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "time flag title impact"
+      "stats stats stats stats";
+    gap: 4px 10px;
     padding: 10px 12px;
   }
-  .event .impact { grid-column: 1 / -1; grid-row: auto; margin-top: -2px; }
-  .event .cell { grid-column: 3; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-  .cell .label { display: inline; }
-  .event .cell:nth-of-type(2) { margin-top: 4px; }
-  .arch-row { grid-template-columns: 60px 34px minmax(0, 1fr); }
-  .arch-row .arch-num, .arch-row .arch-actual { display: none; }
-  .search { min-width: 140px; flex: 1 1 140px; }
-}
+  .event-time { grid-area: time; }
+  .event-flag { grid-area: flag; width: 30px; height: 21px; }
+  .event-main { grid-area: title; }
+  .impact { grid-area: impact; justify-self: end; align-self: start; }
+  .event .impact { margin-top: 0; }
 
-@media (max-width: 560px) {
-  .brand-text em { display: none; }
-  .clock { display: none; }
-  .sync span:last-child { display: none; }
+  .event-stats {
+    grid-area: stats;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 11.5px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .event-stats span { white-space: nowrap; }
+  .event-stats b { font-weight: 600; color: var(--text); margin-left: 3px; }
+  .event-stats .stat-actual b { color: var(--text); }
+  .event-stats .stat-actual.better b { color: #34d399; }
+  .event-stats .stat-actual.worse b { color: #f87171; }
+  html[data-theme="light"] .event-stats .stat-actual.better b { color: #047857; }
+  html[data-theme="light"] .event-stats .stat-actual.worse b { color: #b91c1c; }
+
+  .cell { display: none; } /* desktop cells replaced by .event-stats on mobile */
+
+  .day-head { padding: 6px 2px; }
+  .day-name { font-size: 13px; }
+  .day-date { font-size: 10.5px; }
+
+  /* archive table becomes cards too */
+  .arch-row {
+    grid-template-columns: 68px 36px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "time code title impact"
+      "stats stats stats stats";
+    gap: 4px 10px;
+    padding: 10px 12px;
+  }
+  .arch-time { grid-area: time; }
+  .arch-code { grid-area: code; width: 30px; height: 21px; display: grid; place-items: center; border-radius: 5px; justify-self: start; font-size: 9px; }
+  .arch-title { grid-area: title; }
+  .arch-row .impact { grid-area: impact; justify-self: end; }
+  .arch-num, .arch-actual { display: none; }
+  .arch-row .arch-stats {
+    grid-area: stats;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 11.5px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .arch-row .arch-stats b { font-weight: 600; color: var(--text); margin-left: 3px; }
+  .arch-row .arch-stats .stat-actual.better b { color: #34d399; }
+  .arch-row .arch-stats .stat-actual.worse b { color: #f87171; }
+  html[data-theme="light"] .arch-row .arch-stats .stat-actual.better b { color: #047857; }
+  html[data-theme="light"] .arch-row .arch-stats .stat-actual.worse b { color: #b91c1c; }
+  .arch-head-row { display: none; }
+  .arch-title h2 { font-size: 13px; }
+
+  .archive-section { margin-top: 20px; }
+  .archive-title { padding: 4px 2px 8px; }
+
   .topbar-inner { padding: 10px 14px; }
   .toolbar-inner { padding: 10px 14px; }
   .content { padding: 12px 14px 50px; }
-  .day-head { top: 186px; }
-  .event { grid-template-columns: 60px 34px minmax(0, 1fr); }
-  .today-btn span { display: none; }
+
+  .event-title { font-size: 12.5px; }
+}
+
+@media (max-width: 380px) {
+  .brand-text strong { font-size: 14px; }
+  .event { grid-template-columns: 60px 30px minmax(0, 1fr) auto; }
+  .arch-row { grid-template-columns: 60px 30px minmax(0, 1fr) auto; }
+  .impact { font-size: 9px; padding: 2px 7px; letter-spacing: 0.4px; }
+  .chip { font-size: 10px; padding: 4px 7px; }
 }

@@ -504,7 +504,16 @@
     const forecast = cell("Forecast", row.forecast);
     const previous = cell("Previous", row.previous);
 
-    div.append(time, img, main, impact, actual, forecast, previous);
+    /* mobile stats strip (hidden on desktop) */
+    const stats = document.createElement("div");
+    stats.className = "event-stats";
+    stats.append(
+      statCell("Actual", row.actual || "—", row.movement),
+      statCell("Forecast", row.forecast || "—"),
+      statCell("Previous", row.previous || "—")
+    );
+
+    div.append(time, img, main, impact, stats, actual, forecast, previous);
     return div;
   }
 
@@ -518,6 +527,18 @@
     v.textContent = value || "—";
     c.append(l, v);
     return c;
+  }
+
+  function statCell(label, value, movement) {
+    const s = document.createElement("span");
+    s.className = "stat-" + label.toLowerCase();
+    if (movement) s.classList.add(movement);
+    const l = document.createElement("span");
+    l.textContent = label;
+    const b = document.createElement("b");
+    b.textContent = value;
+    s.append(l, b);
+    return s;
   }
 
   function timezoneLabel(d) {
@@ -679,7 +700,15 @@
       previous.className = "arch-num";
       previous.textContent = ev.previous || "—";
 
-      row.append(time, code, title, impact, actual, forecast, previous);
+      const stats = document.createElement("div");
+      stats.className = "arch-stats";
+      stats.append(
+        statCell("Actual", ev.actual || "—", ev.movement),
+        statCell("Forecast", ev.forecast || "—"),
+        statCell("Previous", ev.previous || "—")
+      );
+
+      row.append(time, code, title, impact, stats, actual, forecast, previous);
       el.archiveTable.appendChild(row);
     });
   }
