@@ -1,0 +1,10 @@
+# local dev only
+.claude/
+server.mjs
+
+# data cache — regenerate with update-news.ps1 (data-embedded.js IS published as the site snapshot)
+data/news.json
+data/_ffpage.html
+
+# logs
+update-log.txt
