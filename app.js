@@ -315,10 +315,13 @@
     el.dayTabs.replaceChildren(frag);
   }
 
+  const CURRENCY_FILTER_BLOCKLIST = new Set(["AUD", "NZD", "CNY", "CAD"]);
+
   function buildCurrencyFilters() {
     const ccyCount = new Map();
     for (const e of state.events) {
       for (const c of splitCcy(e.country)) {
+        if (CURRENCY_FILTER_BLOCKLIST.has(c)) continue;
         ccyCount.set(c, (ccyCount.get(c) || 0) + 1);
       }
     }
@@ -412,7 +415,7 @@
       dot.className = "dot";
       const name = document.createElement("span");
       name.className = "day-name";
-      name.textContent = fmtFull(new Date(key));
+      name.textContent = "Upcoming Events";
       const date = document.createElement("span");
       date.className = "day-date";
       date.textContent = fmtDate(new Date(key));
