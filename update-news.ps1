@@ -37,9 +37,17 @@ function Get-FFPage {
     $tmp = Join-Path $env:TEMP "ff_calendar_page.html"
     & curl.exe -sS -L --max-time 30 --ssl-no-revoke -A $headers["User-Agent"] -H "Accept: text/html" -o $tmp $pageUrl 2>$null
     if ($LASTEXITCODE -eq 0 -and (Test-Path $tmp)) {
-      return [System.IO.File]::ReadAllText($tmp, [System.Text.Encoding]::UTF8)
+      $txt = [System.IO.File]::ReadAllText($tmp, [System.Text.Encoding]::UTF8)
+      if ($txt -match 'calendar__row' -or $txt -match 'calendar__actual') { return $txt }
     }
   }
+  # Fallback: relay through allorigins if direct fetch failed or returned junk
+  $proxy = "https://api.allorigins.win/raw?url=" + [uri]::EscapeDataString($pageUrl)
+  try {
+    $page = Invoke-WebRequest -Uri $proxy -UseBasicParsing -TimeoutSec 40 -Headers @{ "User-Agent" = $headers["User-Agent"] }
+    if ($page.Content -match 'calendar__row') { return $page.Content }
+  } catch { }
+  # Last resort: plain Invoke-WebRequest (usually 403 but harmless to try)
   $page = Invoke-WebRequest -Uri $pageUrl -UseBasicParsing -TimeoutSec 30 -Headers $headers
   return $page.Content
 }
@@ -137,15 +145,44 @@ try {
   try {
     $actuals = Get-FFActualRows
     $actualsNote = "$($actuals.Count) actuals from page"
+    if ($actuals.Count -eq 0 -and $null -eq ($actuals | Select-Object -First 1)) {
+      # empty page (bot-blocked or botched fetch) - treat as scrape failure
+      $actuals = @()
+      $actualsNote = "page returned no rows"
+    }
   } catch {
-    Write-Log ("  page scrape failed (" + $_.Exception.Message + ") - actuals will be blank")
+    Write-Log ("  page scrape failed (" + $_.Exception.Message + ") - keeping previous actuals")
+    $actualsNote = "scrape failed, keeping previous"
+  }
+
+  # Load previous cache so already-known actuals survive transient scrape failures
+  $previous = @()
+  if (Test-Path $jsonPath) {
+    try { $previous = Get-Content $jsonPath -Raw | ConvertFrom-Json } catch { $previous = @() }
+  }
+  $prevByKey = @{}
+  foreach ($p in $previous) {
+    if ($p.title -and $p.date) { $prevByKey[$p.title + "|" + $p.date] = $p }
   }
 
   foreach ($ev in $json) {
     $hit = Find-Actual $ev $actuals
     $actual = ""
     $movement = ""
-    if ($hit) { $actual = $hit.Actual; $movement = $hit.Movement }
+    if ($hit) {
+      $actual = $hit.Actual
+      $movement = $hit.Movement
+      # prefer the page's fresher forecast/previous when the feed has none
+      if (-not $ev.forecast -and $hit.Forecast) { $ev | Add-Member -NotePropertyName "forecast" -NotePropertyValue $hit.Forecast -Force }
+      if (-not $ev.previous -and $hit.Previous) { $ev | Add-Member -NotePropertyName "previous" -NotePropertyValue $hit.Previous -Force }
+    } else {
+      # no fresh actual from the page - keep what we already had
+      $key = $ev.title + "|" + $ev.date
+      if ($prevByKey.ContainsKey($key)) {
+        $actual = $prevByKey[$key].actual
+        $movement = $prevByKey[$key].movement
+      }
+    }
     $ev | Add-Member -NotePropertyName "actual"   -NotePropertyValue $actual
     $ev | Add-Member -NotePropertyName "movement" -NotePropertyValue $movement
   }

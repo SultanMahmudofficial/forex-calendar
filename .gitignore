@@ -2,8 +2,8 @@
 .claude/
 server.mjs
 
-# data cache — regenerate with update-news.ps1 (data-embedded.js IS published as the site snapshot)
-data/news.json
+# data cache — regenerate with update-news.ps1 (news.json is tracked and published so
+# GitHub Actions can commit updated data to keep the live site fresh)
 data/_ffpage.html
 
 # logs

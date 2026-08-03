@@ -1,0 +1,50 @@
+# update-data.yml
+# Keeps the published GitHub Pages calendar fresh: every 10 minutes this
+# workflow re-runs update-news.ps1 (fetch feed + scrape actuals), then commits
+# data/news.json + data/data-embedded.js back to main if they changed.
+# Pushing to main triggers the Pages build, so announced actuals reach the
+# live site within minutes.
+
+name: update-data
+
+on:
+  schedule:
+    # every 10 minutes, offset from :00 to avoid thundering herd
+    - cron: "3,13,23,33,43,53 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run data updater
+        shell: pwsh
+        run: |
+          if (Test-Path update-news.ps1) {
+            & .\update-news.ps1
+            exit $LASTEXITCODE
+          } else {
+            Write-Error "update-news.ps1 not found"
+            exit 1
+          }
+
+      - name: Commit updated data if changed
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/news.json data/data-embedded.js
+          $diff = git diff --cached --quiet
+          if ($LASTEXITCODE -eq 1) {
+            git commit -m "chore: refresh calendar data"
+            git push origin main
+            Write-Output "data updated and pushed"
+          } else {
+            Write-Output "no data change"
+          }

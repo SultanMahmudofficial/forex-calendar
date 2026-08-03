@@ -53,6 +53,10 @@
     dataLoaded: false,
   };
 
+  // client-side polling: re-fetch the cached data file (cache-busted) so fresh
+  // actuals announced on Forex Factory appear without a manual reload
+  const POLL_INTERVAL = 3 * 60 * 1000;
+
   /* ---------- DOM ---------- */
   const $ = (id) => document.getElementById(id);
   const el = {
@@ -768,4 +772,33 @@
   /* ---------- Boot ---------- */
   initTheme();
   loadData();
+
+  /* ---------- Background polling ---------- */
+  async function pollForUpdates() {
+    if (!state.dataLoaded) return;
+    try {
+      const res = await fetch(`data/data-embedded.js?t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) return;
+      const text = await res.text();
+      const m = text.match(/window\.__FF_FETCHED_AT\s*=\s*'([^']+)'/);
+      if (!m || m[1] === window.__FF_FETCHED_AT) return; // unchanged
+
+      const holder = {};
+      const fn = new Function("window", text);
+      fn(holder);
+      if (!Array.isArray(holder.__FF_EVENTS) || !holder.__FF_EVENTS.length) return;
+      window.__FF_EVENTS = holder.__FF_EVENTS;
+      window.__FF_FETCHED_AT = holder.__FF_FETCHED_AT;
+      window.__FF_META = holder.__FF_META || window.__FF_META;
+      state.events = holder.__FF_EVENTS;
+      el.sync.dataset.state = "fresh";
+      el.syncLabel.textContent = "Up to date";
+      el.dataAge.textContent = `updated ${fmtAge(Date.now() - new Date(holder.__FF_FETCHED_AT).getTime())}`;
+      updateArchive();
+      render();
+    } catch (err) {
+      console.warn("Poll failed:", err);
+    }
+  }
+  setInterval(pollForUpdates, POLL_INTERVAL);
 })();
