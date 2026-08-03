@@ -258,7 +258,7 @@ html:not([data-theme="light"]) .icon-moon { display: none; }
 .archive-table { margin-top: 0; }
 .arch-row {
   display: grid;
-  grid-template-columns: 90px 56px minmax(0, 1fr) 100px 100px 100px 108px;
+  grid-template-columns: 90px 56px minmax(0, 1fr) 100px 78px 100px 100px 108px;
   gap: 12px;
   align-items: center;
   padding: 11px 18px;
@@ -266,6 +266,7 @@ html:not([data-theme="light"]) .icon-moon { display: none; }
 }
 .arch-row:last-child { border-bottom: none; }
 .arch-row:hover { background: var(--panel-hover); }
+.archive-table .arch-head-row { grid-template-columns: 90px 56px minmax(0, 1fr) 100px 78px 100px 100px 108px; }
 .arch-time {
   font-family: var(--mono);
   font-size: 13px;
@@ -309,8 +310,28 @@ html:not([data-theme="light"]) .icon-moon { display: none; }
 .arch-actual.mv-worse { color: #f87171; font-weight: 700; }
 html[data-theme="light"] .arch-actual.mv-better { color: #047857; }
 html[data-theme="light"] .arch-actual.mv-worse { color: #b91c1c; }
-.arch-row:hover { background: var(--panel-hover); }
-.arch-row:last-child { border-bottom: none; }
+
+/* Usual Effect column: filled dot (green = good for currency, red = bad) */
+.arch-effect {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+.arch-effect .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.arch-effect .dot.good { background: #34d399; box-shadow: 0 0 6px rgba(52, 211, 153, 0.5); }
+.arch-effect .dot.bad { background: #f87171; box-shadow: 0 0 6px rgba(248, 113, 113, 0.5); }
+.arch-effect .dot.neutral { background: #94a3b8; box-shadow: 0 0 6px rgba(148, 163, 184, 0.4); }
+html[data-theme="light"] .arch-effect .dot.good { background: #059669; }
+html[data-theme="light"] .arch-effect .dot.bad { background: #dc2626; }
+html[data-theme="light"] .arch-effect .dot.neutral { background: #94a3b8; }
 .arch-time {
   font-family: var(--mono);
   font-size: 12px;
@@ -816,6 +837,7 @@ html[data-theme="light"] .cell.mv-worse { color: #b91c1c; }
     color: var(--text-dim);
     font-variant-numeric: tabular-nums;
   }
+  .arch-effect { display: none; }
   .arch-row .arch-stats b { font-weight: 600; color: var(--text); margin-left: 3px; }
   .arch-row .arch-stats .stat-actual.better b { color: #34d399; }
   .arch-row .arch-stats .stat-actual.worse b { color: #f87171; }

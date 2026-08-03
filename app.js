@@ -654,7 +654,7 @@
 
     const thead = document.createElement("div");
     thead.className = "event-head arch-head-row";
-    for (const c of ["Time", "", "Event", "Impact", "Actual", "Forecast", "Previous"]) {
+    for (const c of ["Time", "", "Event", "Impact", "Usual Effect", "Actual", "Forecast", "Previous"]) {
       const th = document.createElement("span");
       th.className = "head-cell";
       th.textContent = c;
@@ -692,6 +692,22 @@
       impact.className = `impact impact-${parseImpact(ev.impact)}`;
       impact.textContent = ev.impact;
 
+      /* Usual Effect: filled dot for High/Medium announced events
+         (green = good for the currency, red = bad, grey = matched forecast) */
+      const effect = document.createElement("span");
+      effect.className = "arch-effect";
+      effect.title = "—";
+      const lvl = parseImpact(ev.impact);
+      if (lvl >= 2 && ev.actual) {
+        const cls = ev.movement === "better" ? "good" : ev.movement === "worse" ? "bad" : "neutral";
+        effect.title = cls === "good" ? "Good for currency" : cls === "bad" ? "Bad for currency" : "Neutral (matched forecast)";
+        const dot = document.createElement("span");
+        dot.className = "dot " + cls;
+        effect.appendChild(dot);
+      } else {
+        effect.textContent = "—";
+      }
+
       const actual = document.createElement("span");
       actual.className = "arch-actual" + (ev.movement ? ` mv-${ev.movement}` : "");
       actual.textContent = ev.actual || "—";
@@ -712,7 +728,7 @@
         statCell("Previous", ev.previous || "—")
       );
 
-      row.append(time, code, title, impact, stats, actual, forecast, previous);
+      row.append(time, code, title, impact, effect, stats, actual, forecast, previous);
       el.archiveTable.appendChild(row);
     });
   }
