@@ -574,7 +574,7 @@
     "country": "USD",
     "date": "2026-08-05T14:30:00+00:00",
     "impact": "Low",
-    "forecast": "-0.9M",
+    "forecast": "-1.5M",
     "previous": "-7.2M",
     "actual": "",
     "movement": ""
@@ -584,6 +584,16 @@
     "country": "USD",
     "date": "2026-08-05T20:05:00+00:00",
     "impact": "Low",
+    "forecast": "",
+    "previous": "",
+    "actual": "",
+    "movement": ""
+  },
+  {
+    "title": "President Trump Speaks",
+    "country": "USD",
+    "date": "2026-08-05T20:30:00+00:00",
+    "impact": "Medium",
     "forecast": "",
     "previous": "",
     "actual": "",
@@ -754,7 +764,7 @@
     "country": "USD",
     "date": "2026-08-06T14:30:00+00:00",
     "impact": "Low",
-    "forecast": "",
+    "forecast": "30B",
     "previous": "28B",
     "actual": "",
     "movement": ""
@@ -874,7 +884,7 @@
     "country": "CAD",
     "date": "2026-08-07T12:30:00+00:00",
     "impact": "High",
-    "forecast": "14.8K",
+    "forecast": "17.8K",
     "previous": "18.2K",
     "actual": "",
     "movement": ""
@@ -944,7 +954,7 @@
     "country": "USD",
     "date": "2026-08-07T19:00:00+00:00",
     "impact": "Low",
-    "forecast": "11.2B",
+    "forecast": "11.4B",
     "previous": "-0.2B",
     "actual": "",
     "movement": ""
