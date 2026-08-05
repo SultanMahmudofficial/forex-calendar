@@ -386,8 +386,8 @@
     "impact": "High",
     "forecast": "0.1%",
     "previous": "0.2%",
-    "actual": "",
-    "movement": ""
+    "actual": "0.5%",
+    "movement": "better"
   },
   {
     "title": "Unemployment Rate",
@@ -396,8 +396,8 @@
     "impact": "High",
     "forecast": "5.4%",
     "previous": "5.3%",
-    "actual": "",
-    "movement": ""
+    "actual": "5.6%",
+    "movement": "worse"
   },
   {
     "title": "Labor Cost Index q/q",
@@ -406,8 +406,8 @@
     "impact": "Low",
     "forecast": "0.6%",
     "previous": "0.5%",
-    "actual": "",
-    "movement": ""
+    "actual": "0.7%",
+    "movement": "better"
   },
   {
     "title": "Average Cash Earnings y/y",
@@ -416,7 +416,7 @@
     "impact": "Low",
     "forecast": "3.4%",
     "previous": "3.2%",
-    "actual": "",
+    "actual": "3.4%",
     "movement": ""
   },
   {
@@ -446,7 +446,7 @@
     "impact": "Low",
     "forecast": "",
     "previous": "-1.0%",
-    "actual": "",
+    "actual": "-3.9%",
     "movement": ""
   },
   {
@@ -456,8 +456,8 @@
     "impact": "Low",
     "forecast": "53.7",
     "previous": "54.1",
-    "actual": "",
-    "movement": ""
+    "actual": "50.4",
+    "movement": "worse"
   },
   {
     "title": "French Industrial Production m/m",
@@ -466,8 +466,8 @@
     "impact": "Low",
     "forecast": "0.3%",
     "previous": "-0.1%",
-    "actual": "",
-    "movement": ""
+    "actual": "0.1%",
+    "movement": "worse"
   },
   {
     "title": "Spanish Services PMI",
@@ -476,8 +476,8 @@
     "impact": "Low",
     "forecast": "54.9",
     "previous": "54.2",
-    "actual": "",
-    "movement": ""
+    "actual": "58.3",
+    "movement": "better"
   },
   {
     "title": "Italian Services PMI",
@@ -486,8 +486,8 @@
     "impact": "Low",
     "forecast": "51.0",
     "previous": "50.2",
-    "actual": "",
-    "movement": ""
+    "actual": "52.5",
+    "movement": "better"
   },
   {
     "title": "French Final Services PMI",
@@ -646,8 +646,8 @@
     "impact": "Low",
     "forecast": "3.1%",
     "previous": "3.1%",
-    "actual": "",
-    "movement": ""
+    "actual": "5.6%",
+    "movement": "worse"
   },
   {
     "title": "ECB Economic Bulletin",
@@ -896,8 +896,8 @@
     "impact": "High",
     "forecast": "6.5%",
     "previous": "6.5%",
-    "actual": "",
-    "movement": ""
+    "actual": "5.6%",
+    "movement": "worse"
   },
   {
     "title": "Average Hourly Earnings m/m",
@@ -926,8 +926,8 @@
     "impact": "High",
     "forecast": "4.2%",
     "previous": "4.2%",
-    "actual": "",
-    "movement": ""
+    "actual": "5.6%",
+    "movement": "worse"
   },
   {
     "title": "Ivey PMI",
