@@ -496,7 +496,7 @@
     "impact": "Low",
     "forecast": "49.8",
     "previous": "49.8",
-    "actual": "",
+    "actual": "49.6",
     "movement": ""
   },
   {
@@ -506,7 +506,7 @@
     "impact": "Low",
     "forecast": "49.6",
     "previous": "49.6",
-    "actual": "",
+    "actual": "49.8",
     "movement": ""
   },
   {
@@ -516,7 +516,7 @@
     "impact": "Low",
     "forecast": "51.6",
     "previous": "51.6",
-    "actual": "",
+    "actual": "51.7",
     "movement": ""
   },
   {
@@ -526,7 +526,7 @@
     "impact": "Low",
     "forecast": "51.8",
     "previous": "51.8",
-    "actual": "",
+    "actual": "52.1",
     "movement": ""
   },
   {
@@ -536,8 +536,8 @@
     "impact": "Low",
     "forecast": "-0.2%",
     "previous": "0.2%",
-    "actual": "",
-    "movement": ""
+    "actual": "-0.3%",
+    "movement": "worse"
   },
   {
     "title": "ADP Non-Farm Employment Change",
@@ -546,8 +546,8 @@
     "impact": "Medium",
     "forecast": "68K",
     "previous": "98K",
-    "actual": "",
-    "movement": ""
+    "actual": "44K",
+    "movement": "worse"
   },
   {
     "title": "Final Services PMI",
@@ -556,8 +556,8 @@
     "impact": "Low",
     "forecast": "53.6",
     "previous": "53.6",
-    "actual": "",
-    "movement": ""
+    "actual": "54.6",
+    "movement": "better"
   },
   {
     "title": "ISM Services PMI",
@@ -566,8 +566,8 @@
     "impact": "Medium",
     "forecast": "54.5",
     "previous": "54.0",
-    "actual": "",
-    "movement": ""
+    "actual": "54.1",
+    "movement": "worse"
   },
   {
     "title": "Crude Oil Inventories",
@@ -576,8 +576,8 @@
     "impact": "Low",
     "forecast": "-1.5M",
     "previous": "-7.2M",
-    "actual": "",
-    "movement": ""
+    "actual": "2.5M",
+    "movement": "worse"
   },
   {
     "title": "FOMC Member Cook Speaks",
