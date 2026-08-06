@@ -616,8 +616,8 @@
     "impact": "Low",
     "forecast": "-1.06B",
     "previous": "-3.02B",
-    "actual": "",
-    "movement": ""
+    "actual": "1.93B",
+    "movement": "better"
   },
   {
     "title": "30-y Bond Auction",
@@ -626,7 +626,7 @@
     "impact": "Low",
     "forecast": "",
     "previous": "3.99|4.6",
-    "actual": "",
+    "actual": "3.94|3.9",
     "movement": ""
   },
   {
@@ -636,8 +636,8 @@
     "impact": "Low",
     "forecast": "0.5%",
     "previous": "1.9%",
-    "actual": "",
-    "movement": ""
+    "actual": "3.1%",
+    "movement": "better"
   },
   {
     "title": "Unemployment Rate",
@@ -646,8 +646,8 @@
     "impact": "Low",
     "forecast": "3.1%",
     "previous": "3.1%",
-    "actual": "5.6%",
-    "movement": "worse"
+    "actual": "3.1%",
+    "movement": ""
   },
   {
     "title": "ECB Economic Bulletin",
@@ -666,8 +666,8 @@
     "impact": "Low",
     "forecast": "0.3%",
     "previous": "-0.3%",
-    "actual": "",
-    "movement": ""
+    "actual": "-1.0%",
+    "movement": "worse"
   },
   {
     "title": "Construction PMI",
@@ -676,7 +676,27 @@
     "impact": "Low",
     "forecast": "40.0",
     "previous": "38.4",
-    "actual": "",
+    "actual": "44.7",
+    "movement": "better"
+  },
+  {
+    "title": "Spanish 10-y Bond Auction",
+    "country": "EUR",
+    "date": "2026-08-06T08:41:00+00:00",
+    "impact": "Low",
+    "forecast": "",
+    "previous": "3.40|1.8",
+    "actual": "3.54|2.4",
+    "movement": ""
+  },
+  {
+    "title": "French 10-y Bond Auction",
+    "country": "EUR",
+    "date": "2026-08-06T08:57:00+00:00",
+    "impact": "Low",
+    "forecast": "",
+    "previous": "3.68|3.3",
+    "actual": "3.86|3.7",
     "movement": ""
   },
   {
@@ -686,28 +706,8 @@
     "impact": "Low",
     "forecast": "0.1%",
     "previous": "0.2%",
-    "actual": "",
-    "movement": ""
-  },
-  {
-    "title": "Spanish 10-y Bond Auction",
-    "country": "EUR",
-    "date": "2026-08-06T09:03:00+00:00",
-    "impact": "Low",
-    "forecast": "",
-    "previous": "3.40|1.8",
-    "actual": "",
-    "movement": ""
-  },
-  {
-    "title": "French 10-y Bond Auction",
-    "country": "EUR",
-    "date": "2026-08-06T09:18:00+00:00",
-    "impact": "Low",
-    "forecast": "",
-    "previous": "3.68|3.3",
-    "actual": "",
-    "movement": ""
+    "actual": "-0.3%",
+    "movement": "worse"
   },
   {
     "title": "Challenger Job Cuts y/y",
@@ -716,7 +716,7 @@
     "impact": "Low",
     "forecast": "",
     "previous": "-4.5%",
-    "actual": "",
+    "actual": "-46.1%",
     "movement": ""
   },
   {
