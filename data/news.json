@@ -792,22 +792,22 @@
   {
     "title": "Trade Balance",
     "country": "CNY",
-    "date": "2026-08-07T02:03:00+00:00",
+    "date": "2026-08-07T02:38:00+00:00",
     "impact": "Low",
     "forecast": "735B",
     "previous": "859B",
-    "actual": "3.9B",
+    "actual": "767B",
     "movement": "better"
   },
   {
     "title": "USD-Denominated Trade Balance",
     "country": "CNY",
-    "date": "2026-08-07T02:04:00+00:00",
+    "date": "2026-08-07T02:38:00+00:00",
     "impact": "Low",
     "forecast": "108.6B",
     "previous": "125.6B",
-    "actual": "",
-    "movement": ""
+    "actual": "112.5B",
+    "movement": "better"
   },
   {
     "title": "Leading Indicators",
@@ -816,7 +816,7 @@
     "impact": "Low",
     "forecast": "116.5%",
     "previous": "116.8%",
-    "actual": "",
+    "actual": "116.4%",
     "movement": ""
   },
   {
@@ -826,7 +826,7 @@
     "impact": "Low",
     "forecast": "0.2%",
     "previous": "0.9%",
-    "actual": "",
+    "actual": "0.2%",
     "movement": ""
   },
   {
@@ -836,8 +836,8 @@
     "impact": "Low",
     "forecast": "17.2B",
     "previous": "19.1B",
-    "actual": "",
-    "movement": ""
+    "actual": "15.4B",
+    "movement": "worse"
   },
   {
     "title": "Lloyds HPI m/m",
