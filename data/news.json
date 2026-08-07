@@ -886,8 +886,8 @@
     "impact": "High",
     "forecast": "17.8K",
     "previous": "18.2K",
-    "actual": "",
-    "movement": ""
+    "actual": "75.1K",
+    "movement": "better"
   },
   {
     "title": "Unemployment Rate",
@@ -896,8 +896,8 @@
     "impact": "High",
     "forecast": "6.5%",
     "previous": "6.5%",
-    "actual": "5.6%",
-    "movement": "worse"
+    "actual": "6.4%",
+    "movement": "better"
   },
   {
     "title": "Average Hourly Earnings m/m",
@@ -906,8 +906,8 @@
     "impact": "High",
     "forecast": "0.3%",
     "previous": "0.3%",
-    "actual": "",
-    "movement": ""
+    "actual": "0.1%",
+    "movement": "worse"
   },
   {
     "title": "Non-Farm Employment Change",
@@ -916,8 +916,8 @@
     "impact": "High",
     "forecast": "85K",
     "previous": "57K",
-    "actual": "",
-    "movement": ""
+    "actual": "-23K",
+    "movement": "worse"
   },
   {
     "title": "Unemployment Rate",
@@ -926,8 +926,8 @@
     "impact": "High",
     "forecast": "4.2%",
     "previous": "4.2%",
-    "actual": "5.6%",
-    "movement": "worse"
+    "actual": "4.1%",
+    "movement": "better"
   },
   {
     "title": "Ivey PMI",
@@ -936,7 +936,7 @@
     "impact": "Medium",
     "forecast": "55.4",
     "previous": "56.2",
-    "actual": "",
+    "actual": "55.1",
     "movement": ""
   },
   {
