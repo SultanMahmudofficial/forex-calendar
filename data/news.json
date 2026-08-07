@@ -842,12 +842,12 @@
   {
     "title": "Lloyds HPI m/m",
     "country": "GBP",
-    "date": "2026-08-07T06:00:00+00:00",
+    "date": "2026-08-07T06:03:00+00:00",
     "impact": "Low",
     "forecast": "0.2%",
     "previous": "0.2%",
-    "actual": "",
-    "movement": ""
+    "actual": "0.0%",
+    "movement": "worse"
   },
   {
     "title": "French Trade Balance",
@@ -856,8 +856,8 @@
     "impact": "Low",
     "forecast": "-6.5B",
     "previous": "-6.9B",
-    "actual": "",
-    "movement": ""
+    "actual": "-5.8B",
+    "movement": "better"
   },
   {
     "title": "Foreign Currency Reserves",
@@ -866,7 +866,7 @@
     "impact": "Low",
     "forecast": "",
     "previous": "759B",
-    "actual": "",
+    "actual": "768B",
     "movement": ""
   },
   {
@@ -876,7 +876,7 @@
     "impact": "Low",
     "forecast": "-34",
     "previous": "-36",
-    "actual": "",
+    "actual": "-35",
     "movement": ""
   },
   {
